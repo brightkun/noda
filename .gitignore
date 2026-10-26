@@ -1,0 +1,17 @@
+# Секреты: в репозиторий попадают только шаблоны .env.example без значений
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Инструкции для Claude Code: содержат личные данные, остаются локально
+CLAUDE.md
+.claude/
+
+# Зависимости и артефакты сборки
+node_modules/
+.next/
+dist/
+*.log
+.playwright-mcp/
