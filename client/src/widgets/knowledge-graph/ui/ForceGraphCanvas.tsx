@@ -15,8 +15,8 @@ export default function ForceGraphCanvas(props: ForceGraphProps<GraphNode>) {
     const graph = graphRef.current;
     if (!graph) return;
 
-    graph.d3Force("charge")?.strength(-280);
-    graph.d3Force("link")?.distance(100);
+    graph.d3Force("charge")?.strength(-180);
+    graph.d3Force("link")?.distance(75);
     graph.d3ReheatSimulation();
     isFitted.current = false;
   }, [props.graphData]);

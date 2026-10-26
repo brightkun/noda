@@ -11,9 +11,18 @@ export const TagFilter = () => {
 
   if (!tags || tags.length === 0) return null;
 
+  // Частые теги первыми: при десятках тегов сверху остаются самые полезные
+  const sortedTags = [...tags].sort(
+    (a, b) => b.notesCount - a.notesCount || a.name.localeCompare(b.name),
+  );
+
   return (
-    <ul className="flex flex-wrap gap-1.5" aria-label="Фильтр по тегу">
-      {tags.map((tag) => {
+    // max-h: блок тегов не вытесняет список заметок, остальное листается внутри
+    <ul
+      className="flex max-h-[5.5rem] flex-wrap gap-1.5 overflow-y-auto"
+      aria-label="Фильтр по тегу"
+    >
+      {sortedTags.map((tag) => {
         const isActive = tag.name === activeTag;
 
         return (

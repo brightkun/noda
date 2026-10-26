@@ -113,7 +113,8 @@ export const KnowledgeGraph = ({ tag }: { tag: string | null }) => {
               : palette.nodeDim;
             ctx.fill();
 
-            if (globalScale < 0.7 && node.id !== hoveredId) return;
+            // подписи прячем только при сильном отдалении, иначе граф на 15-30 узлов «немой»
+            if (globalScale < 0.35 && node.id !== hoveredId) return;
 
             ctx.font = `${12 / globalScale}px Inter, sans-serif`;
             ctx.textAlign = "center";
